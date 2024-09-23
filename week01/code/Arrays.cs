@@ -64,13 +64,23 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
+        /*
+        Plan
+        1. Create a new list called 'movedRight' with the same length as 'data'
+        2. Iterate over the original 'data' list
+        3. Calculate the rotated index using modulo operation.
+        4. Clear the original 'data' list to prepare it for the new values.
+        5. Add all the elements from 'movedRight' back into 'data', completing the rotation.
+        */
+
         List<int> movedRight = new List<int>(new int[data.Count]);
         // new list is necesary to hold the new values without losing the originals ones
         for (var i = 0; i <= data.Count - 1; i++)
             movedRight[i] = data[(i - amount + data.Count) % data.Count];
-        //rotating indexes
+        //rotating indexes withint list size
         data.Clear();
         data.AddRange(movedRight);
+        // clearing and adding the new numbers in data
         return;
     }
 
