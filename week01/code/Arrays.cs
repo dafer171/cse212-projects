@@ -12,21 +12,42 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+
+        /*
+        Plan
+        1. Create a list called 'result'
+        2. If number > 0:
+            2.1 Iterate from 'number' to 'number * length', adding 'number' each time
+            2.2 Add each multiple to the 'result' list
+        3. If number < 0:
+            3.1 Iterate from 'number' to 'number * length', subtracting 'number' each time
+            3.2 Add each multiple to the 'result' list
+        4. Convert the list to an array and return it
+        */
+
+        // New List
         List<double> result = new();
+
+        // If number > 0:
         if (number > 0)
         {
+            // Iterate from 'number' to 'number * length', adding 'number' each time
             for (var i = number; i <= number * length; i += number)
             {
+                // Add each multiple to the 'result' list
                 result.Add(i);
             }
         }
         // Code didn't work for negative numbers
         else
         {
+            //Iterate from 'number' to 'number * length', subtracting 'number' each time
             for (var i = number; i >= number * length; i += number)
+                //Add each multiple to the 'result' list
                 result.Add(i);
         }
-        return result.ToArray(); // replace this return statement with your own
+        return result.ToArray(); // Convert the list to an array and return it
     }
 
     /// <summary>
