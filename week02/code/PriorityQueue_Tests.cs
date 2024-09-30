@@ -26,13 +26,26 @@ public class PriorityQueueTests
     }
 
     [TestMethod]
-    // Scenario: 
-    // Expected Result: 
-    // Defect(s) Found: 
+    // Scenario: Dequeue function shall remove the item with the highest priority and return its value
+    // Expected Result: Fix bugs, 5; Tests, 4; Repeat tests, 3.
+    // Defect(s) Found: Function does not remove the item with the highest priority 
     public void TestPriorityQueue_2()
     {
+        var repeating = new PriorityItem("Repeat Tests", 3);
+        var testing = new PriorityItem("Tests", 4);
+        var fixing = new PriorityItem("Fix bugs", 5);
+
+        var expectedString = "Fix bugs";
+
         var priorityQueue = new PriorityQueue();
-        Assert.Fail("Implement the test case and then remove this.");
+        priorityQueue.Enqueue(repeating.Value, repeating.Priority);
+        priorityQueue.Enqueue(testing.Value, testing.Priority);
+        priorityQueue.Enqueue(fixing.Value, fixing.Priority);
+
+        var priorityItem = priorityQueue.Dequeue();
+
+        Assert.AreEqual(expectedString, priorityItem);
+
     }
 
     // Add more test cases as needed below.
