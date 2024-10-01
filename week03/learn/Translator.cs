@@ -34,7 +34,13 @@ public class Translator
     /// <returns>The translated word or "???" if no translation is available</returns>
     public string Translate(string fromWord)
     {
-        var toWord = _words[fromWord];
-        return toWord;
+        string newWord = "???";
+
+        if (_words.ContainsKey(fromWord))
+        {
+            newWord = _words[fromWord];
+        }
+
+        return newWord;
     }
 }
