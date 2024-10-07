@@ -62,7 +62,6 @@ public static class SetsAndMaps
             else
                 degrees[educationName] = 1;
         }
-
         return degrees;
     }
 
@@ -84,8 +83,34 @@ public static class SetsAndMaps
     /// </summary>
     public static bool IsAnagram(string word1, string word2)
     {
-        // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
+        var preparedWord1 = word1.ToLower().Replace(" ", "");
+        var preparedWord2 = word2.ToLower().Replace(" ", "");
+
+        if (preparedWord1.Length != preparedWord2.Length)
+            return false;
+
+        var dictOne = new Dictionary<char, int>();
+        var dictTwo = new Dictionary<char, int>();
+
+        foreach (char c in preparedWord1)
+        {
+            if (dictOne.ContainsKey(c))
+                dictOne[c]++;
+            else
+                dictOne[c] = 1;
+        }
+
+        foreach (char c in preparedWord2)
+        {
+            if (dictTwo.ContainsKey(c))
+                dictTwo[c]++;
+            else
+                dictTwo[c] = 1;
+        }
+        if (dictOne.Count == dictTwo.Count &&
+               dictOne.All(kv => dictTwo.ContainsKey(kv.Key) && dictTwo[kv.Key] == kv.Value))
+            return true;
+        else return false;
     }
 
     /// <summary>
