@@ -1,4 +1,5 @@
 using System.Text.Json;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 
 public static class SetsAndMaps
 {
@@ -22,7 +23,24 @@ public static class SetsAndMaps
     public static string[] FindPairs(string[] words)
     {
         // TODO Problem 1 - ADD YOUR CODE HERE
-        return [];
+        var setStrings = new HashSet<string>(words);
+        var result = new List<string>();
+        //var setStringReversed = new HashSet<string>();
+        foreach (var word in words)
+        {
+            char[] charArray = word.ToCharArray();
+            Array.Reverse(charArray);
+            var reversedstring = new string(charArray);
+            //setStringReversed.Add(reversedstring);
+            if (setStrings.Contains(reversedstring) && word != reversedstring)
+            {
+                result.Add($"{word} & {reversedstring}");
+                setStrings.Remove(word);
+                setStrings.Remove(reversedstring);
+            }
+        }
+        //var setIntersect = setStrings.Intersect(setStringReversed).ToArray();
+        return result.ToArray();
     }
 
     /// <summary>
