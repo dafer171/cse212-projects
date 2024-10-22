@@ -42,6 +42,21 @@ public static class Recursion
     public static void PermutationsChoose(List<string> results, string letters, int size, string word = "")
     {
         // TODO Start Problem 2
+        if (letters.Length == 0)
+        {
+            //Console.WriteLine(word);
+            return;
+        }
+        else
+        {
+            for (var i = 0; i < letters.Length; i++)
+            {
+                var lettersleft = letters.Remove(i, 1);
+                PermutationsChoose(results, lettersleft, size, word + letters[i]);
+                if (word.Length == size & !results.Contains(word))
+                    results.Add(word);
+            }
+        }
     }
 
     /// <summary>
