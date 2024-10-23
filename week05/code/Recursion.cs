@@ -141,6 +141,21 @@ public static class Recursion
     public static void WildcardBinary(string pattern, List<string> results)
     {
         // TODO Start Problem 4
+        int index = pattern.LastIndexOf('*');
+        if (index == -1)
+        {
+            results.Add(pattern);
+            return;
+        }
+
+        else
+        {
+            var preWildCard = pattern.Substring(0, index);
+            var aftWildCard = pattern.Substring(index + 1);
+
+            WildcardBinary(preWildCard + '0' + aftWildCard, results);
+            WildcardBinary(preWildCard + '1' + aftWildCard, results);
+        }
     }
 
     /// <summary>
