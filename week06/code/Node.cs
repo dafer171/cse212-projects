@@ -37,6 +37,27 @@ public class Node
     public bool Contains(int value)
     {
         // TODO Start Problem 2
+        if (value == Data)
+            return true;
+
+        if (value < Data)
+        {
+            if (Left != null)
+            {
+                return Left.Contains(value);
+            }
+            return false;
+        }
+
+        if (value > Data)
+        {
+            if (Right != null)
+            {
+                return Right.Contains(value);
+            }
+            return false;
+        }
+
         return false;
     }
 
